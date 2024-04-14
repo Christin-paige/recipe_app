@@ -11,3 +11,9 @@ class RecipeModelTest(TestCase):
 
         field_label = recipe._meta.get_field('name').verbose_name
         self.assertEqual(field_label, 'name')
+
+    def test_get_absolute_url(self):
+        recipe = Recipe.objects.get(id=1)
+        #get absolute url, should take you to the details page of the first recipe
+        #load the url of the first recipe
+        self.assertEqual(recipe.get_absolute_url(), '/list/1')

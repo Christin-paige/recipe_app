@@ -1,0 +1,48 @@
+<style>
+    h1 {
+       padding: 20px;
+       text-align: center;
+       font-family:Georgia, 'Times New Roman', Times, serif;
+       
+      
+    } 
+    img {
+       display: block;
+       margin-left: auto;
+       margin-right: auto;
+       height: 300px;
+       width: 300px;
+       padding: 50px;
+    }
+    .recipe {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .border {
+       display: flex;
+       align-items: center;
+       flex-direction: column;
+       color: lightgray;
+      }
+   
+ </style>
+
+
+<h1>All Recipes</h1>        {% comment%} HTML tag for heading  {% endcomment%}
+<p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
+
+{% comment%} start of table  {% endcomment%}
+   <tr> {% comment%}  the <tr> tag adds a new row   {% endcomment%}
+        {% comment%} the <td> tag adds a column  {% endcomment%}       
+   </tr>
+   {% for object in object_list %}  {% comment%} go through each element of recipes list {% endcomment%}
+ <div class="recipe">
+   <tr>
+       <td><img src="{{object.pic.url}}" width="150" height="200" /></td>
+       <td><a class = "recipeName" href ="{{object.get_absolute_url}}"> {% comment%} add links to recipe names  {% endcomment%}
+        {{object.name}}
+        </a></td>
+   </tr>
+</div>
+   {% endfor %}

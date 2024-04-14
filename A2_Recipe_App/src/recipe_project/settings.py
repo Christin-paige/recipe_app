@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     #recipe apps
     'recipes',
     'users',
-    'ingredients',
+    
     
 ]
 

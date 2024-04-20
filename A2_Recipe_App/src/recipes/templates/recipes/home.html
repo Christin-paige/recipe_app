@@ -4,13 +4,39 @@
    <title>
        RecipeApp Home
    </title>
-   <a href ="{%url 'login' %}"> Login </a>
+  
    <style>
+      body {
+         background: rgb(253,253,253);
+background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
+      }
+   ul {
+      display: flex;
+      justify-content: end;
+      list-style-type: none;
+      margin:0;
+      padding: 0;
+      
+   }
+    li {
+      float: left;
+      border-radius: 10%;
+      margin: 5px 30px 0px 0px;
+   }
+   li a {
+      display: block;
+      color: grey;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+   }
+   li a:hover {
+      color: lightgray;
+   }
       h1 {
          text-align: center;
          font-family:Georgia, 'Times New Roman', Times, serif;
          
-        
       } 
       .main-img {
          display: block;
@@ -28,17 +54,30 @@
       .border {
          color: lightgray;
       }
+      a {
+         text-decoration: none;
+         color: black;
+         
+      }
 
    </style>
    <body>
-      <h1>Green & Comfort</h1;>
+      <navbar class="navbar">
+         <ul>
+          <li><a href ="{%url 'login' %}">Login</a></li> 
+         </ul>
+      </navbar>
+    
+      <h1>Green & Comfort</h1>
          
       <p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
-         <h2>5 Best Vegan Recipes</h2>
+      <a href ="{%url 'recipes:list' %}"> <h2>5 Best Vegan Recipes</h2> </a>
+
          <p>Five simple easy to follow recipes for your tranistion to a healthy, vegan lifestyle.</p>
          <p><strong>Vegan ~~~~~~~ Favorites</strong></p>
       <img class ="main-img" src="{% static 'recipes/images/vegan-granola.jpg' %}" alt="home" width="600" height="675">
      <br>
+     
       <p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
 
    </body>

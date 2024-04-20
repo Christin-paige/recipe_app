@@ -1,1 +1,78 @@
-<h1> You have logged out!</h1>
+
+<style>
+ body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      background: rgb(253,253,253);
+      background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
+      background-size: cover;
+      
+   }
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.success {
+ width: auto;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 75px;
+ 
+}
+.coffee {
+ width: 400px;
+ opacity: .5;
+ border-radius: 90%;
+ box-shadow: 10px 5px 5px;
+ 
+}
+.goodbye {
+    padding-top: 75px;
+}
+.message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+   li a {
+      display: block;
+      color: grey;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+   }
+   li a:hover {
+      color: lightgray;
+   }
+   ul {
+      display: flex;
+      justify-content: end;
+      list-style-type: none;
+      margin:0;
+      padding: 0;
+      
+   }
+
+
+</style>
+
+
+<navbar>
+    <ul>
+        <li><a href ="{%url 'login' %}"> Back to Login Page </a></li>
+        </ul>
+</navbar>
+<div class="body">
+<h2 class="success"> You have worked hard, now go have a cup of coffee - with oatmilk, of course!</h2>
+<img class="coffee" src="https://images.pexels.com/photos/19124427/pexels-photo-19124427/free-photo-of-cup-of-coffee.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+<div class="message">
+<p class="goodbye">See you next time &#x1F331;</p>
+
+</div>
+</div>

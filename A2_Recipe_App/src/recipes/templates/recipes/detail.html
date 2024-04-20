@@ -1,4 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Green&Comfort</title>
+</head>
+<body>
+   
+
+
 <style>
+    body {
+      background: rgb(253,253,253);
+      background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
+      background-size: cover;
+      
+   }
+     ul {
+      display: flex;
+      justify-content: end;
+      list-style-type: none;
+      margin:0;
+      padding: 0;
+      
+   }
+    li {
+      float: left;
+      border-radius: 10%;
+      margin: 5px 30px 0px 0px;
+   }
+   li a {
+      display: block;
+      color: grey;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+   }
+   li a:hover {
+      color: lightgray;
+   }
     h2 {
        text-align: center;
        font-family:cursive;
@@ -27,9 +67,12 @@
  
  </style>
 
+<ul>
+<li><a href ="{%url 'recipes:list' %}">Back </a></li>
+</ul>
 
 <h2>{{object.name}}</h2>
-
+<p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
 
 <img src="{{object.pic.url}}" width="200" height="300" />
 <div class="instructions">
@@ -38,4 +81,7 @@
 <b>Cooking Time: </b> {{object.cooking_time}} <br>
 </div>
 
-<p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
+
+
+</body>
+</html>

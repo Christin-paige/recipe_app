@@ -1,4 +1,64 @@
-<h1>Login</h1>          {% comment %} print heading {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Green&Comfort</title>
+</head>
+<body>
+   
+<style>
+  body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      background: rgb(253,253,253);
+      background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
+      background-size: cover;
+      
+   }
+   
+.welcome {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  
+}
+h1 {
+   text-align: center;
+   
+         
+      } 
+button {
+   color: gray;
+   margin: 20px;
+   padding: 5px 20px;
+   
+}
+form {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 50px;
+   
+}
+.border {
+       display: flex;
+       align-items: center;
+       flex-direction: column;
+       color: lightgray;
+      }
+img {
+   width: 100%;
+   height: auto;
+}
+</style>
+
+
+<div class="welcome">
+<h1>Welcome</h1> 
+<h2>To Green & Comfort</h2> 
+</div>
+        {% comment %} print heading {% endcomment %}
 
 {% comment %} check for error message {% endcomment %}
 {% if error_message %}
@@ -16,3 +76,9 @@
    {% comment %} add button {% endcomment %}
    <button type="submit" >Login</button>
 </form>
+<p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
+<div>
+<img src="https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+</div>
+</body>
+</html>

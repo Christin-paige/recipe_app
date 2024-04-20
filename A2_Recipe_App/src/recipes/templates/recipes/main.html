@@ -1,23 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Green&Comfort</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+</head>
+
 <style>
-    h1 {
-       padding: 20px;
-       text-align: center;
-       font-family:Georgia, 'Times New Roman', Times, serif;
-       
+   body {
+      font-family: "Sedan", serif;
+      font-weight: 600;
+      font-style: normal;
+      background: rgb(253,253,253);
+background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
+
+   }
+   h1 {
+         text-align: center;
+         font-family:Georgia, 'Times New Roman', Times, serif;
+         
+      } 
+   ul {
+      display: flex;
+      justify-content: end;
+      list-style-type: none;
+      margin:0;
+      padding: 0;
       
-    } 
-    img {
+   }
+   li {
+      float: left;
+      border-radius: 10%;
+      margin: 5px 30px 0px 0px;
+   }
+   li a {
+      display: block;
+      color: grey;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+   }
+   li a:hover {
+      color: lightgray;
+   }
+   a {
+      display: block;
+      color: grey;
+      text-align: center;
+      text-decoration: none;
+   }
+   a:hover {
+      color: lightgray;
+   }
+h3 {
+   font-family: cursive;
+   display: flex;
+   justify-content: center;
+}
+   .recipe_grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+   }
+    .grid_item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+    .food_img {
        display: block;
        margin-left: auto;
        margin-right: auto;
        height: 300px;
        width: 300px;
        padding: 50px;
-    }
-    .recipe {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+       position: relative;
     }
     .border {
        display: flex;
@@ -28,22 +91,25 @@
    
  </style>
 
-
-<h1>All Recipes</h1>        {% comment%} HTML tag for heading  {% endcomment%}
-<p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
-<a href ="{%url 'logout' %}"> Logout </a>
-{% comment%} start of table  {% endcomment%}
-   <tr> {% comment%}  the <tr> tag adds a new row   {% endcomment%}
-        {% comment%} the <td> tag adds a column  {% endcomment%}       
-   </tr>
+<body>
+<navbar class="navbar">
+   <ul>
+      <li><a href ="{%url 'recipes:home' %}">Home</a></li> 
+     <li><a href ="{%url 'logout' %}">Logout</a></li> 
+   </ul>
+</navbar>
+<h1>Green & Comfort</h1>  
+<h3>All Recipes</h3>     {% comment%} HTML tag for heading  {% endcomment%}
+<p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
+  <div class="recipe_grid"> 
    {% for object in object_list %}  {% comment%} go through each element of recipes list {% endcomment%}
- <div class="recipe">
-   <tr>
-       <td><img src="{{object.pic.url}}" width="150" height="200" /></td>
-       <td><a class = "recipeName" href ="{{object.get_absolute_url}}"> {% comment%} add links to recipe names  {% endcomment%}
-        {{object.name}}
-        </a></td>
-   </tr>
-   
-</div>
+      <div class="grid_item">
+       <img class="food_img" src="{{object.pic.url}}" />
+       <a class = "recipe_name" href ="{{object.get_absolute_url}}"> {% comment%} add links to recipe names  {% endcomment%}
+        {{object.name}}</a>
+      </div>
+  
    {% endfor %}
+   </div>
+</body>
+</html>

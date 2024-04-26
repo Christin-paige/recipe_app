@@ -69,16 +69,32 @@ background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.
       </navbar>
     
       <h1>Green & Comfort</h1>
-         
+      <h1>Search for recipes</h1>
+      <hr>
+      <form action="" method="POST">
+         {% csrf_token %}
+         {{form}}
+         <button type="submit" >search</button>
+      </form>  
+      <br>
+     {% if recipes_df %}
+         {{recipes_df|safe}}
+      {% else %}
+             <h3> no data</h3>
+         {% endif %}
+
       <p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
       <a href ="{%url 'recipes:list' %}"> <h2>The Best Vegan Recipes</h2> </a>
 
          <p>Simple and easy to follow recipes for your tranistion to a healthy, vegan lifestyle.</p>
          <p><strong>Vegan ~~~~~~~ Favorites</strong></p>
+   
       <img class ="main-img" src="{% static 'recipes/images/vegan-granola.jpg' %}" alt="home" width="600" height="675">
      <br>
-     
+   
       <p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
+
+  
 
    </body>
 </html>

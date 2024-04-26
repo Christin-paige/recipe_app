@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
       font-weight: 600;
       font-style: normal;
       background: rgb(253,253,253);
-background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
+      background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
 
    }
    h1 {
@@ -89,18 +90,28 @@ h3 {
        color: lightgray;
       }
    
+
  </style>
 
 <body>
 <navbar class="navbar">
    <ul>
       <li><a href ="{%url 'recipes:home' %}">Home</a></li> 
-     <li><a href ="{%url 'logout' %}">Logout</a></li> 
+      <li><a href ="{%url 'logout' %}">Logout</a></li> 
    </ul>
 </navbar>
+
+
+
 <h1>Green & Comfort</h1>  
-<h3>All Recipes</h3>     {% comment%} HTML tag for heading  {% endcomment%}
+<h3>All Recipes</h3> 
+
+  
+
+
 <p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
+
+
   <div class="recipe_grid"> 
    {% for object in object_list %}  {% comment%} go through each element of recipes list {% endcomment%}
       <div class="grid_item">

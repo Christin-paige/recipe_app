@@ -1,7 +1,10 @@
 from django.db import models
 from django.shortcuts import reverse
 
+
 # Create your models here.
+
+
 class Recipe(models.Model):
     name=models.CharField(max_length=120)
     ingredients=models.CharField(max_length=250)

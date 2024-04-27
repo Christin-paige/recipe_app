@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+   <title>
+       RecipeApp Home
+   </title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <style>
+        body {
+          background: rgb(253,253,253);
+          background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
+          background-size: 100vh;
+         
+          font-family: Georgia, 'Times New Roman', Times, serif;
+         
+          
+       }
+       .recipe-form {
+        margin: 50px;
+
+       }
+         ul {
+          display: flex;
+          justify-content: end;
+          list-style-type: none;
+          margin:0;
+          padding: 0;
+          
+       }
+        li {
+          float: left;
+          border-radius: 10%;
+          margin: 5px 30px 0px 0px;
+       }
+       li a {
+          display: block;
+          color: grey;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+       }
+       li a:hover {
+          color: lightgray;
+       }
+        h2 {
+           text-align: center;
+           font-family:cursive;
+           padding: 20px;
+           
+          
+        } 
+        img {
+           display: block;
+           margin-left: auto;
+           margin-right: auto;
+           height: 600px;
+           width: 600px;
+        }
+        .instructions {
+           text-align: center;
+           font-family:Georgia, 'Times New Roman', Times, serif;
+           padding: 40px;
+        }
+        .border {
+           display: flex;
+           align-items: center;
+           flex-direction: column;
+           color: lightgray;
+          }
+     
+     </style>
+     <body>
+{% include './navbar.html' %}
+
+<div class="recipe-form">
+  
+        <h1>Create A Recipe</h1>
+        <br/>
+        {%if submitted %}
+        Your recipe was created successfully!
+
+        {% else %}
+        <form action="" method="POST">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <input type="submit" value="Submit"
+                class="btn btn-secondary">
+
+        </form>
+</div>
+</body>
+</html>
+   
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

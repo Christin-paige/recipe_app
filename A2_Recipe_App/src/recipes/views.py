@@ -4,6 +4,8 @@ from .models import Recipe
 from .forms import RecipesSearchForm
 import pandas as pd
 from .utils import get_recipename_from_id, get_chart
+from .forms import CreateRecipeForm
+from django.http import HttpResponseRedirect
 
 
 class RecipeListView(ListView):
@@ -15,8 +17,22 @@ class RecipeDetailView(DetailView):
     template_name = 'recipes/detail.html'
 # views 
 
+def create_recipe(request):
+    submitted = False 
+    if request.method == "POST":
+         form = CreateRecipeForm(request.POST)
+         if form.is_valid():
+             form.save()
+             return HttpResponseRedirect('/create_recipe?submitted == True')
+    else: 
+         form = CreateRecipeForm
+         if 'submiutted' in request.GET:
+             submitted = True
 
-def home(request):
+    form = CreateRecipeForm
+    return render(request, 'recipes/create_recipe.html', {'form':form, 'submitted':submitted})
+
+def search_recipe(request):
      form = RecipesSearchForm(request.POST or None)
      recipes_df=None #initialize dataframe to None
      chart = None
@@ -43,17 +59,17 @@ def home(request):
             recipes_df['id'].apply(get_recipename_from_id)
             chart=get_chart(chart_type, recipes_df, labels=recipes_df['id'].values)
             recipes_df=recipes_df.to_html()
-           
-
        
      context={
           'form': form,
           'recipes_df': recipes_df,
           'chart' : chart
-         
-          
      }
-     return render(request, 'recipes/home.html', context)
+     return render(request, 'recipes/recipe_search.html', {'form':form})
+
+    
+def home(request):
+    return render(request, 'recipes/home.html')
 
 
 

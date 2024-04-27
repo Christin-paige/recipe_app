@@ -8,31 +8,31 @@
    <style>
       body {
          background: rgb(253,253,253);
-background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
+         background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.989233193277311) 60%);
       }
-   ul {
-      display: flex;
-      justify-content: end;
-      list-style-type: none;
-      margin:0;
-      padding: 0;
+      ul {
+         display: flex;
+         justify-content: end;
+         list-style-type: none;
+         margin:0;
+         padding: 0;
       
-   }
-    li {
-      float: left;
-      border-radius: 10%;
-      margin: 5px 30px 0px 0px;
-   }
-   li a {
-      display: block;
-      color: grey;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-   }
-   li a:hover {
-      color: lightgray;
-   }
+      }
+      li {
+         float: left;
+         border-radius: 10%;
+         margin: 5px 30px 0px 0px;
+      }
+      li a {
+         display: block;
+         color: grey;
+         text-align: center;
+         padding: 14px 16px;
+         text-decoration: none;
+      }
+      li a:hover {
+         color: lightgray;
+      }
       h1 {
          text-align: center;
          font-family:Georgia, 'Times New Roman', Times, serif;
@@ -71,17 +71,21 @@ background: linear-gradient(130deg, rgba(253,253,253,1) 23%, rgba(233,223,222,0.
       <h1>Green & Comfort</h1>
       <h1>Search for recipes</h1>
       <hr>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
          {% csrf_token %}
-         {{form}}
-         <button type="submit" >search</button>
-      </form>  
-      <br>
-     {% if recipes_df %}
-         {{recipes_df|safe}}
+         {{form.as_p }}
+         {% if form.initial.pic %}
+            <img src="{{ form.initial.pic }}" alt="Recipe Image" style="max-width: 200px; max-height:200px;">
+         {% endif %}
+         {% if recipes_df %}
+            {{recipes_df|safe}}
+         <br>
+         <img src="data:image/png;base64, {{chart|safe}}">
       {% else %}
              <h3> no data</h3>
          {% endif %}
+         <button type="submit" >search</button>
+      </form> 
 
       <p class="border">&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;&#9788;</p>
       <a href ="{%url 'recipes:list' %}"> <h2>The Best Vegan Recipes</h2> </a>

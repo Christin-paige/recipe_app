@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView  #to display lists
 from .models import Recipe
 import pandas as pd
-from .utils import get_recipename_from_id, get_chart
+from .utils import get_recipename_from_id, get_recipe_ingredient_usage
 from .forms import CreateRecipeForm, RecipesSearchForm
 from django.http import HttpResponseRedirect, HttpResponse
 
@@ -71,7 +71,7 @@ def search_recipe(request):
             #convert queryset to pandas dataframe
             recipes_df=pd.DataFrame(qs.values())
             recipes_df['id'].apply(get_recipename_from_id)
-            chart=get_chart(chart_type, recipes_df)
+            chart=get_recipe_ingredient_usage(chart_type, recipes_df)
             recipes_df=recipes_df.to_html()
        
         context={
@@ -80,17 +80,3 @@ def search_recipe(request):
           'chart' : chart
         }
         return render(request, 'recipes/recipe_search.html', context)
-   
-
-    
-
-
-
-
-
-
-
-
-
-
-

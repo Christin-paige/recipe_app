@@ -1,12 +1,24 @@
 from recipes.models import Recipe #connect parameters from recipe model
 from io import BytesIO
+from collections import Counter
 import base64
 import matplotlib.pyplot as plt
 #define a function that takes the id
 
+# Get all ingredients from the database
+all_ingredients = [ingredient.strip() for recipe in Recipe.objects.all() for ingredient in recipe.ingredients.split(',')]
+
+# Count the occurrences of each ingredient
+ingredient_counts = Counter(all_ingredients)
+
+# Extract ingredient names and counts
+ingredients = list(ingredient_counts.keys())
+recipe_counts = list(ingredient_counts.values())
+
 def get_recipename_from_id(val):
     #this id is used to retrieve name from record
     recipename=Recipe.objects.get(id=val)
+   
     #and returned back
     return recipename
 
@@ -38,17 +50,38 @@ def get_graph():
 #chart_type: user input o type of chart,
 #data: pandas dataframe
 def get_chart(chart_type, data, **kwargs):
+   #queryset of recipes
+   #qs = data
+   #filtered_qs = qs.filter(**kwargs)
+   # Get all ingredients from the database
+   all_ingredients = [ingredient.strip() for ingredient in data['ingredients']]
+
+# Count the occurrences of each ingredient
+   ingredient_counts = Counter(all_ingredients)
+
+# Extract ingredient names and counts
+   ingredients = list(ingredient_counts.keys())
+   recipe_counts = list(ingredient_counts.values())
    #switch plot backend to AGG (Anti-Grain Geometry) - to write to file
    #AGG is preferred solution to write PNG files
    plt.switch_backend('AGG')
+   
 
    #specify figure size
-   fig=plt.figure(figsize=(6,3))
+   plt.figure(figsize=(6,3))
 
    #select chart_type based on user input from the form
    if chart_type == '#1':
-       #plot bar chart between ?? on x-axis and ?? on y-axis
-       plt.bar(data['ingredients'], data['id'])
+      #plot bar chart between ?? on x-axis and ?? on y-axis
+       plt.bar(ingredients, recipe_counts)
+       plt.xlabel('Ingredients')
+       plt.ylabel('Number of Recipes')
+       plt.title('Number of Recipes Each Ingredient is In')
+       plt.xticks(rotation=45)
+
+       chart=get_graph()
+       return chart
+
 
    elif chart_type == '#2':
        #generate pie chart based on the price.
@@ -66,5 +99,5 @@ def get_chart(chart_type, data, **kwargs):
    plt.tight_layout()
 
    #render the graph to file
-   chart =get_graph() 
+   chart = get_graph() 
    return chart  

@@ -34,11 +34,6 @@ def get_chart(chart_type, data, **kwargs):
    all_ingredients = [ingredient.strip() for recipe in Recipe.objects.all() for ingredient in recipe.ingredients.split(',')]
    ingredient_counts = Counter(all_ingredients)
 
-   ingredients = list(ingredient_counts.keys())
-   recipe_counts = list(ingredient_counts.values())
-# Count the occurrences of each ingredient
-   
-
 # Extract ingredient names and counts
    ingredients = list(ingredient_counts.keys())
    recipe_counts = list(ingredient_counts.values())

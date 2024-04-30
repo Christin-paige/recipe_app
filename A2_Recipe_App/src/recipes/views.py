@@ -71,7 +71,7 @@ def search_recipe(request):
             #convert queryset to pandas dataframe
             recipes_df=pd.DataFrame(qs.values())
             recipes_df['id'].apply(get_recipename_from_id)
-            chart=get_recipe_ingredient_usage(chart_type, recipes_df)
+            chart=get_recipe_ingredient_usage(chart_type, recipe)
             recipes_df=recipes_df.to_html()
        
         context={

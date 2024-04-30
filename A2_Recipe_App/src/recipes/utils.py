@@ -1,4 +1,3 @@
-from recipes.models import Recipe #connect parameters from recipe model
 from io import BytesIO
 from collections import Counter
 import base64
@@ -21,7 +20,7 @@ def get_recipename_from_id(val):
     recipename=Recipe.objects.get(id=val)
     return recipename
 
-def get_recipe_ingredient_usage(recipe_id, chart_type, **kwargs ):#retrieves chosen recipe
+def get_recipe_ingredient_usage(recipe_id, Recipe, chart_type, **kwargs ):#retrieves chosen recipe
     recipe = get_object_or_404(Recipe, pk=recipe_id)
     chosen_recipe_ingredients = [ingredient.strip() for ingredient in recipe.ingredients.split(',')]#extracts ingredients
   # Count ingredient occurrences in all recipes (excluding the chosen one)

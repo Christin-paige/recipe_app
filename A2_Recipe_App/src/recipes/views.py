@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView  #to display lists
 from .models import Recipe
 import pandas as pd
-from .utils import get_recipename_from_id, get_recipe_ingredient_usage
+from .utils import get_recipe_ingredient_usage
 from .forms import CreateRecipeForm, RecipesSearchForm
 from django.http import HttpResponseRedirect
 
@@ -60,25 +60,23 @@ def search_recipe(request):
         qs = Recipe.objects.filter(name=recipe_name, ingredients=ingredients)
         if qs.exists():
             recipe = qs.first()
+            recipe_id = recipe.id
             pic_url = recipe.pic.url
             initial_data = {
                 'recipe_name': recipe_name, 
                 'ingredients': ingredients, 
                 'pic': pic_url,
                 'chart_type': chart_type,
+                
             }
             form = RecipesSearchForm(initial=initial_data)
+            print(f"recipe from view: {recipe}")
 
         if len(qs)>0: #if data found
-            #recipes_df = qs.values()
-            recipe_id = qs.first().id
-            chart = get_recipe_ingredient_usage(chart_type)
+          
+            chart = get_recipe_ingredient_usage(chart_type, recipe_id)
             recipes_df = qs.values()
-            #convert queryset to pandas dataframe
-            #recipes_df=pd.DataFrame(qs.values())
-            #recipes_df['id'].apply(get_recipename_from_id)
-            #chart=get_recipe_ingredient_usage(chart_type, recipe)
-            #recipes_df=recipes_df.to_html()
+           
         else:
             return render(request, 'recipes/recipe_search')
         recipe_count = Recipe.objects.count()

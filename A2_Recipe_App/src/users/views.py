@@ -5,6 +5,6 @@ def home(request):
     return render(request, 'users/home.html')
 
 #define function-based view - records(records()
-def records(request):
+def recipe_search(request):
    #do nothing, simply display page    
-   return render(request, 'users/records.html')
+   return render(request, 'users/search_recipe.html')

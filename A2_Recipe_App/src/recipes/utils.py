@@ -15,6 +15,9 @@ def get_graph():
     buffer.close()#free up the memory of buffer
     return graph#return the image/graph
 
+def get_recipename_from_id(val):
+    recipename=Recipe.objects.get(id=val)
+    return recipename
 
 def get_recipe_ingredient_usage(chart_type, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)#retrieve recipe
@@ -41,12 +44,12 @@ def get_recipe_ingredient_usage(chart_type, recipe_id):
  
    #select chart_type based on user input from the form
     if chart_type == '#1':
-       plt.figure(figsize=(8,5))
+       plt.figure(figsize=(8,6))
        plt.bar(ingredients, recipe_counts)
        plt.xlabel('Ingredients')
        plt.ylabel('Number of Recipes')
        plt.title('Number of Recipes Containing Each Ingredient')
-       plt.xticks(rotation=45)
+       plt.xticks(rotation=20)
 
        buffer = BytesIO()#create a BytesIO buffer for the image
        plt.savefig(buffer, format='png')#create a plot with a bytesIO object as a file-like object. Set format to png
@@ -70,9 +73,10 @@ def get_recipe_ingredient_usage(chart_type, recipe_id):
     
     elif chart_type == '#3':
        #generate line chart based
-       
        plt.plot(ingredients, recipe_counts)
        plt.title("Number of Recipes Containing Each Ingredient")
+       plt.xlabel('Ingredients')
+       plt.ylabel('Number of Recipes')
 
        buffer = BytesIO()#create a BytesIO buffer for the image
        plt.savefig(buffer, format='png')#create a plot with a bytesIO object as a file-like object. Set format to png

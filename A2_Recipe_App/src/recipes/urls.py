@@ -10,6 +10,6 @@ urlpatterns = [
    path('list/<pk>', RecipeDetailView.as_view(), name='detail'),
    path('create_recipe', views.create_recipe, name='create_recipe'),
    path('search_recipe', views.search_recipe, name='search_recipe'),
-   path('search_bar', views.search_bar, name='search_bar')
+   path('search_bar', views.search_bar, name='search_bar'),
   
 ]

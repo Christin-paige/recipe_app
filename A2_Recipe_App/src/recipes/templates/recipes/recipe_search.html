@@ -21,24 +21,28 @@
        }
     </style>
     <body>
+      
         {% include './navbar.html' %}
+        <h1>Search for Recipes</h1>
+        <hr>
         <form class = "form" action="" method="POST">
             {% csrf_token %}
             {{ form }}
+            <br>
+       
             <button type="submit" 
             class="btn btn-secondary">Search</button>
             <br>
-
+       
             {% if form.initial.pic %}
                <img src="{{ form.initial.pic }}" alt="Recipe Image" style="max-width: 200px; max-height:200px;">
             {% endif %}
             {% if recipes_df %}
                {{recipes_df|safe}}
-            
             <br>
             <img src="data:image/png;base64, {{chart|safe}}">
          {% else %}
-     
+               <h3>no data</h3>
             {% endif %}
            
         

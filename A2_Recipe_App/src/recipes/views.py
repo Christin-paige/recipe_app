@@ -1,18 +1,22 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 from .models import Recipe
-from .utils import get_recipe_ingredient_usage
+from .utils import get_recipe_ingredient_usage, get_recipename_from_id
 from .forms import CreateRecipeForm, RecipesSearchForm
 from django.db.models import Q
+import pandas as pd
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class RecipeListView(ListView):
+class RecipeListView(LoginRequiredMixin, ListView):
     model = Recipe
     template_name = 'recipes/main.html'
 
-class RecipeDetailView(DetailView):
+class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'recipes/detail.html'
 
+@login_required
 def home(request):
     return render(request, 'recipes/home.html')
 
@@ -41,7 +45,7 @@ def search_bar(request):
 
 def search_recipe(request):
     if request.method == 'GET':
-        form = RecipesSearchForm()  # Initialize an empty form for GET requests
+        form = RecipesSearchForm(request.POST or None)  # Initialize an empty form for GET requests
         return render(request, 'recipes/recipe_search.html', {'form': form})
      
     form = RecipesSearchForm(request.POST or None)
@@ -64,6 +68,9 @@ def search_recipe(request):
         
 
         if qs.exists():
+            recipes_df=pd.DataFrame(qs.values())
+            recipes_df['id'].apply(get_recipename_from_id)
+            recipes_df=recipes_df.to_html()
             recipe = qs.first()
             recipe_id = recipe.id
             pic_url = recipe.pic.url
@@ -74,7 +81,7 @@ def search_recipe(request):
                 'chart_type': chart_type,
             }
             form = RecipesSearchForm(initial=initial_data)
-
+       
         if len(qs) > 0:  # If data found
             # Get the count of all recipes and unique ingredients
             recipe_count = Recipe.objects.count()

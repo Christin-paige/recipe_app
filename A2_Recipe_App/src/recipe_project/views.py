@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 #Django Form for authentication
 from django.contrib.auth.forms import AuthenticationForm 
-from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
 #define a function view called login_view that takes a request from user
@@ -42,6 +42,7 @@ def login_view(request):
    return render(request, 'auth/login.html', context) 
 
 #define a function view called logout_view that takes a request from user
+@login_required
 def logout_view(request):                                  
    logout(request)          #the use pre-defined Django function to logout
    return HttpResponseRedirect(reverse('logout_done')) #after logging out go to login form (or whichever page you want)

@@ -70,11 +70,12 @@
   <body>
     {% include './navbar.html' %}
 
+
     <div class="recipe-form">
       <h1>Create A Recipe</h1>
       <br />
       {%if submitted %} Your recipe was created successfully! {% else %}
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %} {{ form.as_p }}
 
         <input type="submit" value="Submit" class="btn btn-secondary" />

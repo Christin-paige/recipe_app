@@ -23,7 +23,7 @@ def home(request):
 def create_recipe(request):
     submitted = False 
     if request.method == "POST":
-        form = CreateRecipeForm(request.POST)
+        form = CreateRecipeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/create_recipe?submitted=True')

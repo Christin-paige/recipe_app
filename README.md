@@ -6,7 +6,6 @@
 - View ingredient statistics and visualizations in a pie chart, line graph, or bar graph
 - Users can search for recipes by recipe name or ingredient
 - Links to the recipe details are on the recipe page
-- 
 
 ## Requirements
 - Python 3.8

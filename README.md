@@ -19,7 +19,7 @@
 3. Install the required dependencies (requirements.txt)
 4. Create a local database
 
-##Run the Project
+## Run the Project
 1. Set the DJANGO_SECRET_KEY environment variable
 2. Start the development server by running 'python manage.py server'
 

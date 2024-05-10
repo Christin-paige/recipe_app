@@ -24,7 +24,7 @@ DEBUG = True
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ["127.0.0.1", "christinmartin.pythonanywhere.com"]
+ALLOWED_HOSTS = ['christinmartin.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -137,6 +137,8 @@ LOGIN_URL='/login/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = ['https://christinmartin.pythonanywhere.com']
 
 # Heroku: Update database configuration from $DATABASE_URL.
 

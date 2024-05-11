@@ -144,8 +144,9 @@ STATICFILES_DIRS=[
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
-#MEDIA_ROOT= BASE_DIR / '/media'
+
 MEDIA_URL = '/media/'
+#MEDIA_ROOT was altered to reflect the path to the images on pythonanywhere
 MEDIA_ROOT = '/home/christinmartin/recipe_app/A2_Recipe_App/src/media/'
 #AUTH
 LOGIN_URL='/login/'
@@ -158,6 +159,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://christinmartin.pythonanywhere.com']
 
-# Heroku: Update database configuration from $DATABASE_URL.
+
 
 

@@ -142,8 +142,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 #MEDIA_ROOT= BASE_DIR / '/media'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media', 'recipes')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/christinmartin/recipe_app/A2_Recipe_App/src/media/'
 #AUTH
 LOGIN_URL='/login/'
 

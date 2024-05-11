@@ -13,13 +13,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 env_path = load_dotenv(os.path.join(BASE_DIR, '.env'))
 load_dotenv(env_path)
 import dj_database_url
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-ml49cp(e)=yakpevh4xz)3w)6xuq6kv7g&3^xf^)gr-n3&p#%9')
@@ -131,10 +134,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/',
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS=[
-   BASE_DIR / 'static',
+   BASE_DIR / 'static'
 ]
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
